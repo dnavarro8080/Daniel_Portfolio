@@ -26,9 +26,10 @@ Performed natural language processing to identify non-exact matches of patent id
 and institutions, implemented with final report in Python.
 
 # [Project 3: Housing Data Prediction]() 
-![alt text]()
+![breno-assis-r3WAWU5Fi5Q-unsplash](https://user-images.githubusercontent.com/57077220/198105884-a0df8f32-6a2a-4c40-a9f3-5a7f28b17d21.jpg)
 
-
+Photo by <a href="https://unsplash.com/@brenoassis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Breno Assis</a> on <a href="https://unsplash.com/s/photos/housing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
 
 Explored Boston housing data to forecast value of a home. Trained, tested and evaluated
 KNN, LDA, QDA, and regression models. Used a k-fold cross-validation and cross-validation scores to compare
@@ -38,9 +39,10 @@ models.
 
 
 # [Project 4: Android App Market]() 
-![alt text]()
+![denny-muller-HfWA-Axq6Ek-unsplash](https://user-images.githubusercontent.com/57077220/198106248-f384013e-5278-4efb-9961-cab06542f567.jpg)
 
-
+Photo by <a href="https://unsplash.com/es/@redaquamedia?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Denny Müller</a> on <a href="https://unsplash.com/s/photos/android?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
 Employed a comprehensive analysis of the Android app market by comparing over ten
 thousand apps in Google Play across different categories. Learned insights in data and devised strategies to drive
 growth and retention based on size and price of app, distribution of app ratings, and sentiment analysis.
@@ -49,9 +51,9 @@ growth and retention based on size and price of app, distribution of app ratings
 
 
 # [Project 5: Predicting Credit Card Approvals]() 
-![alt text]()
+![avery-evans-RJQE64NmC_o-unsplash](https://user-images.githubusercontent.com/57077220/198106476-9436020d-bdb0-4501-8bf7-5d7abc74db42.jpg)
 
-
+Photo by <a href="https://unsplash.com/@averye457?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Avery Evans</a> on <a href="https://unsplash.com/s/photos/credit-card?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 Built automatic credit card approval predictor using logistic regression and
 performed a grid search of model parameters to improve the model's ability to predict credit card approvals.
