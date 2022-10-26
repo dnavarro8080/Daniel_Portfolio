@@ -62,7 +62,7 @@ Built automatic credit card approval predictor using logistic regression and
 performed a grid search of model parameters to improve the model's ability to predict credit card approvals.
 
 ---
-# [Project 6: Web Scraping]()
+# [Project 6: Web Scraping](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/IMDB_movies_webscraping%20(2).R)
 ![denise-jans-Lq6rcifGjOU-unsplash](https://user-images.githubusercontent.com/57077220/198113193-414107d3-e7a3-401c-81ac-53c032046762.jpg)
 
 Photo by <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Denise Jans</a> on <a href="https://unsplash.com/s/photos/movies?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
