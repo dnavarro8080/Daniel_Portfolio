@@ -1,4 +1,4 @@
-theme: Modernist
+
 # Daniel Navarro
 *Data Analyst | Data Scientist*
 
