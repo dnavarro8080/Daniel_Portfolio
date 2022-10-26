@@ -1,0 +1,370 @@
+---
+title: "STA 6933 HW2- Statistical Learning"
+author: "Daniel Navarro"
+date: '2022-10-09'
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+### Problem 1:
+The soybean data can also be found at the UC Irvine Machine Learning Repository. Data
+were collected to predict disease in 683 soybeans. The 35 predictors are mostly categorical
+and include information on the environmental conditions (e.g., temperature, precipitation) and
+plant conditions (e.g., left spots, mold growth). The outcome labels consist of 19 distinct
+classes.
+
+```{r}
+library(mlbench)
+library(psych)
+library(visdat)
+library(ggplot2)
+library(dplyr)
+library(VIM)
+library(tidyverse)
+library(corrplot)
+library(caret)
+data(Soybean)
+?Soybean
+
+str(Soybean)
+summary(Soybean)
+```
+
+
+#### (a) Investigate the frequency distributions for the categorical predictors. Are any of the
+distributions degenerate in the ways discussed earlier in this chapter?
+
+```{r}
+
+par(mfrwo = c(3,3))
+for(x in 2:ncol(Soybean)){
+  plot(Soybean[x], main=colnames(Soybean[x]))
+}
+
+# Function to get near zero values of the data
+nearZeroVar(Soybean, names = TRUE, saveMetrics=T)
+```
+Distribution degenerate =  predictor variables with unique values that have very low
+frequency and near zero variance. From the histograms I assume that *mycelium* and *sclerotia* are the most
+important degenerates. We can also see that *leaf.mild* and *int.discolor* also show near
+zero values. After running the *nearzerovar* function we can see that *leaf.mild*, *mycelium*, and
+*sclerotia* have near zero variance as well, and that none of the variables have zero variance.
+
+
+#### (b) Roughly 18% of the data are missing. Are there particular predictors that are more likely
+to be missing? Is the pattern of missing data related to the classes?
+
+```{r}
+#visualize missing observations vs. present
+vis_miss(Soybean)
+```
+
+From the above graph we see how many missing values we have compared to the present values. We can see that some variables are more prone to have missing data than the rest of the variables.
+- 9.5% missing
+- 90.5% present
+
+```{r}
+# Histogram of missing values with a pattern of how they are missing throught the data
+length(which(is.na(Soybean)))
+length(which(!complete.cases(Soybean)))
+plot = aggr(Soybean, numbers = TRUE, sortVars= TRUE, labels=names(Soybean), cex.axis=.7, gap=3, ylab=c('Histogram of missing data','Pattern'))
+```
+We can see that variables have over 15% missing values. 82.28 % of the data is not missing, and the pattern of the missing data is related to the *Classes*. 
+
+```{r}
+apply(Soybean[-1],2,function(x){sum(is.na(x))})
+
+```
+
+The missing data turns out to belong to pytophthora-rot class contributing to 68%.
+
+
+#### (c) Develop a strategy for handling missing data, either by eliminating predictors or imputation. Clearly justify your strategy.
+
+The missing values are imputed by replacing it with the median values of the respective columns. 
+
+---
+
+### Problem 2:
+The caret package contains a Quantitative Structure-Activity Relationship (QSAR) data set
+from Mente and Lombardo (2005). Here, the ability of a chemical to permeate the blood-brain
+barrier was experimentally determined for 208 compounds. 134 descriptors were measured for
+each compound.
+
+### (a) Start R and use these commands to load the data:
+
+* library(caret)
+* data(BloodBrain)
+* # use ?BloodBrain to see more details
+
+The numeric outcome is contained in the vector logBBB while the predictors are in the
+data frame bbbDescr.
+
+```{r}
+library(caret)
+data(BloodBrain)
+
+?BloodBrain
+
+```
+
+
+### (b) Do any of the individual predictors have degenerate distributions?
+
+```{r}
+nearZeroVar(bbbDescr, names=TRUE)
+
+```
+The following features have near zero variance and therefor are degenerate:
+negative, peoe_vsa.2.1, peoe_vsa.3.1, a_acid, vsa_acid, frac.anion7 and alert 
+
+
+### (c) Generally speaking, are there strong relationships between the predictor data? If so, how
+could correlations in the predictor set be reduced? Does this have a dramatic effect on
+the number of predictors available for modeling?
+
+```{r}
+#Correlations between predictors
+corrplot(cor(bbbDescr))
+# 0.60 correlation cutoff
+Corr_cols = findCorrelation(cor(bbbDescr), cutoff=0.60)
+#Remove the highly correlated predictors
+bbbDescr_low_corrs = bbbDescr[,-Corr_cols]
+#Plot the low correlated values
+corrplot(cor(bbbDescr_low_corrs))
+```
+We can see strong correlations for tpsa values. 
+
+Principal component analysis unsupervised technique can reduce the number of features of high correlation retaining the variance in the first two components of PCA. This gives us an ideal set of features, but the setback is that we loose interpretability of the data. Here, we used a cutoff of 60% to reduce the number of highly correlated features.
+
+---
+
+### Problem 3:
+Suppose we have a data set with five predictors, X1 = GPA, X2 = IQ, X3 = Level (1 for
+College and 0 for High School), X4 = Interaction between GPA and IQ, and X5 = Interaction
+between GPA and Level. The response is starting salary after graduation (in thousands of
+dollars). Suppose we use least squares to fit the model, and get $βˆ0$ = 50, $β^1$ = 20, $β^2$ =0.07, $β^3$ = 35, $β^4$=0.01, $β^5$ = −10.
+
+### (a) Which answer is correct, and why?
+
+(i) For a fixed value of IQ and GPA, high school graduates earn more, on average, than
+college graduates.
+
+
+
+(ii) For a fixed value of IQ and GPA, college graduates earn more, on average, than high
+school graduates.
+
+
+(iii) For a fixed value of IQ and GPA, high school graduates earn more, on average, than
+college graduates provided that the GPA is high enough.
+
+
+(iv) For a fixed value of IQ and GPA, college graduates earn more, on average, than high
+school graduates provided that the GPA is high enough.
+
+y_hat = 50 + 20GPA + 0.07IQ + 35Level + 0.01GPA * IQ - 10GPA * Level
+
+ High School only:
+y_hat = 50 + 20GPA + 0.07IQ + 0.01GPA * IQ
+
+College Graduate:
+y_hat = 85 + 10GPA + 0.07IQ + 0.01GPA * IQ
+
+
+**ANSWER:** Option (iv)
+
+### (b) Predict the salary of a college graduate with IQ of 110 and a GPA of 4.0.
+```{r}
+y_hat = 85 + (10*4) + (0.07*110) + ((0.01*4) * 110)
+print(paste0('College Graduate Salary: $', y_hat))
+```
+
+### (c) True or false: Since the coefficient for the GPA/IQ interaction term is very small, there
+is very little evidence of an interaction effect. Justify your answer.
+
+FALSE. It also depends on the standard error of beta estimates. GPA's are dependent on IQ.
+
+---
+
+
+### Problem 4:
+4. This exercise involves the Boston housing data set, which is the part of the ISLR2 library.
+* library(ISLR2)
+* Boston
+
+### (a) For each predictor, fit a simple linear regression model to predict the response. Describe
+your results. In which of the models is there a statistically significant association between
+the predictor and the response? Create some plots to back up your assertions.
+
+```{r}
+library(ISLR2)
+data(Boston)
+
+#Simple linear regressions
+zn = glm(crim~zn, data=Boston)
+summary(zn)
+indus= glm(crim~indus, data=Boston)
+summary(indus)
+chas= glm(crim~chas, data=Boston)
+summary(chas)
+nox= glm(crim~nox, data=Boston)
+summary(nox)
+rm= glm(crim~rm, data=Boston)
+summary(rm)
+age= glm(crim~age, data=Boston)
+summary(age)
+dis= glm(crim~dis, data=Boston)
+summary(dis)
+rad= glm(crim~rad, data=Boston)
+summary(rad)
+tax= glm(crim~tax, data=Boston)
+summary(tax)
+ptratio= glm(crim~ptratio, data=Boston)
+summary(ptratio)
+lstat= glm(crim~lstat, data=Boston)
+summary(lstat)
+medv= glm(crim~medv, data=Boston)
+summary(medv)
+```
+```{r}
+#Distribution plots
+par(mfrow=(c(2,2)))
+plot(Boston$chas,Boston$crim)
+plot(Boston$zn,Boston$crim)
+plot(Boston$nox,Boston$crim)
+plot(Boston$indus,Boston$crim)
+plot(Boston$rad,Boston$crim)
+plot(Boston$dis,Boston$crim)
+plot(Boston$age,Boston$crim)
+plot(Boston$rm,Boston$crim)
+plot(Boston$tax,Boston$crim)
+plot(Boston$ptratio,Boston$crim)
+plot(Boston$tax,Boston$crim)
+plot(Boston$lstat,Boston$crim)
+plot(Boston$medv,Boston$crim)
+```
+
+```{r}
+# Fit a SLR model for each predictor
+# Create a list to store the resulting models
+model.results = vector("list", ncol(Boston))
+names(model.results) = names(Boston)[-ncol(Boston)]
+# Create a data.frame to store coefficients, to facilitate plotting later
+coef.se.vals = data.frame(var=names(Boston)[-ncol(Boston)],
+estimate=rep(NA),
+se=rep(NA))
+# Loop through Boston variables 
+for (i in 1:(ncol(Boston))){
+# Fit a simple linear model and store results
+model.results[[i]] = lm(crim ~ Boston[,i], data=Boston)
+# Pull out the coefficient values
+coef.se.vals[i,2:3] = summary(model.results[[i]])$coefficients[2,1:2]
+}
+
+# Plot coefficient estimates with s.e. bars to explore significance
+limits = aes(ymax = estimate + 2*se, ymin = estimate - 2*se)
+ggplot(coef.se.vals, aes(x=var, y=estimate)) +
+geom_abline(intercept=0, slope=0, colour="red", linetype="dotdash") +
+geom_point(size=2, colour="blue") +
+geom_errorbar(limits, width=.2, colour="blue", alpha=.5) +
+ylim(-1.5,1.5) + labs( x="variable",y="coefficient estimate")
+
+# Get models summaries
+lapply(model.results, summary)
+
+```
+
+We can see that in every model there is a statistically significant association between
+the predictor and the response.
+
+### (b) Fit a multiple regression model to predict the response using all of the predictors. Describe
+your results. For which predictors can we reject the null hypothesis $H_0$ : $β_j$ = 0?
+
+```{r}
+# Fit a multiple linear regression model with all predictors
+model.full = lm(crim ~ ., data=Boston)
+summary(model.full)
+
+```
+
+
+Based on the p-values for the MLR, we can reject $H_0$ for the following predictors:
+zn
+dis
+rad
+medv
+
+### (c) How do your results from (a) compare to your results from (b)? Create a plot displaying
+the univariate regression coefficients from (a) on the x-axis, and the multiple regression
+coefficients from (b) on the y-axis. That is, each predictor is displayed as a single point
+in the plot. Its coefficient in a simple linear regression model is shown on the x-axis, and
+its coefficient estimate in the multiple linear regression model is shown on the y-axis.
+
+```{r}
+# Extract data on coefficients from full and simple models
+coef.compare = data.frame(slm = coef.se.vals$estimate,
+full = coef(model.full),
+var = coef.se.vals$var)
+
+# Zoomed in plot of coefficient estimates
+
+ggplot(coef.compare, aes(x=slm, y=full, label=var)) +
+geom_text(hjust=0, vjust=1, size=3) + ylim(-1.6,.5) + xlim(-3,1.5) +
+ylab("coefficent estimate: full model") +
+xlab("coefficent estimate: simple model") +
+geom_abline(alpha=.5, linetype="dotdash", colour="red") +
+geom_point(size=2, colour="blue")  + labs(title='Plot of coefficient estimates')
+
+
+```
+
+Many of the coefficient estimates do not change drastically
+from the simple linear regression model to the multiple regression model and are clustered along the
+x = y, dashed red line. The coefficient estimates for  rad and dis change sign. Distance from employment centers is negative associated with home value in the multiple regression model. Accessibility to highways is positively
+associated with home values in the multiple regression model.
+
+
+### (d) Is there evidence of non-linear association between any of the predictors and the response?
+To answer this question, for each predictor **X**, fit a model of the form:
+$$ Y = β_0 + β_1 + β_2X^2 +β_3X^3 + ε.$$
+
+```{r}
+# Fit a SLR model for each predictor
+# Create a list to store the resulting models
+model.results2 = vector("list", ncol(Boston))
+names(model.results2) = names(Boston)[-ncol(Boston)]
+# Create a data.frame to store coefficients, to facilitate plotting later
+coef.se.vals2 = data.frame(var=names(Boston)[-ncol(Boston)],
+estimate2=rep(NA),
+se2=rep(NA))
+# Loop through Boston variables 
+for (i in 1:(ncol(Boston))){
+# Fit a simple linear model and store results
+model.results2[[i]] = lm(crim ~ Boston[,i]+(Boston[,i]^2)+(Boston[,i]^3), data=Boston)
+# Pull out the coefficient values
+coef.se.vals2[i,2:3] = summary(model.results2[[i]])$coefficients[2,1:2]
+}
+
+# Plot coefficient estimates with s.e. bars to explore significance
+limits = aes(ymax = estimate2 + 2*se2, ymin = estimate2 - 2*se2)
+ggplot(coef.se.vals2, aes(x=var, y=estimate2)) +
+geom_abline(intercept=0, slope=0, colour="red", linetype="dotdash") +
+geom_point(size=2, colour="blue") +
+geom_errorbar(limits, width=.2, colour="blue", alpha=.5) +
+ylim(-1.5,1.5) + labs( x="variable",y="coefficient estimate")
+
+# Get models summaries
+lapply(model.results2, summary)
+
+```
+From the polynomial fit, we can see that there is non-linear association between the response variable and the following predictors:
+
+indus
+nox
+age
+dis
+ptratio
+medv
