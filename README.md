@@ -7,7 +7,7 @@
 * Bachelors of Science (Petroleum Engineering), *Texas A&M University*, 2016-2018
 ---
 
-# [Project 1: Solid Waste Data Assessment]()
+# [Project 1: Solid Waste Data Assessment](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/SolidWaste_RegressionAnalysis.ipynb)
 
 (![gary-chan-YzSZN3qvHeo-unsplash](https://user-images.githubusercontent.com/57077220/198105303-02fdf53f-0e93-4793-9499-5ef4bff28ccf.jpg)
 
