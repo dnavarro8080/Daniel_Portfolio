@@ -71,6 +71,6 @@ Analyzed if movie ratings become harsher or if they have lessened through the ye
 
 ## Relevant Work (Python/R)
 - [EDA](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/project-eda-imdb.ipynb)
-- [Prediction]()
+- [Prediction](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/Final_Project_Pt.2_EDA.ipynb)
 - [Linreg & KNN](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/project-linreg-and-knn.ipynb)
 
