@@ -61,7 +61,13 @@ Photo by <a href="https://unsplash.com/@averye457?utm_source=unsplash&utm_medium
 Built automatic credit card approval predictor using logistic regression and
 performed a grid search of model parameters to improve the model's ability to predict credit card approvals.
 
+---
+# [Project 6: Web Scraping]()
+![denise-jans-Lq6rcifGjOU-unsplash](https://user-images.githubusercontent.com/57077220/198113193-414107d3-e7a3-401c-81ac-53c032046762.jpg)
 
+Photo by <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Denise Jans</a> on <a href="https://unsplash.com/s/photos/movies?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+Analyzed if movie ratings become harsher or if they have lessened through the years. Are ratings independent of genres? 
 
 
 
