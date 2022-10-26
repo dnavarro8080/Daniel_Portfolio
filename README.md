@@ -63,14 +63,19 @@ performed a grid search of model parameters to improve the model's ability to pr
 
 ---
 # [Project 6: Web Scraping](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/IMDB_movies_webscraping%20(2).R)
+[Presentation](https://docs.google.com/presentation/d/1s4gYUiszCRHFn0xwIcIw1vvJKV0ZA7Qn/edit?usp=sharing&ouid=107167621671715091798&rtpof=true&sd=true)
+<br>
 ![denise-jans-Lq6rcifGjOU-unsplash](https://user-images.githubusercontent.com/57077220/198113193-414107d3-e7a3-401c-81ac-53c032046762.jpg)
 
 Photo by <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Denise Jans</a> on <a href="https://unsplash.com/s/photos/movies?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
 Analyzed if movie ratings become harsher or if they have lessened through the years. Are ratings independent of genres? 
 
+--- 
+
 ## Relevant Work (Python/R)
 - [EDA](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/project-eda-imdb.ipynb)
 - [Prediction](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/Final_Project_Pt.2_EDA.ipynb)
 - [Linreg & KNN](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/project-linreg-and-knn.ipynb)
+- [Visualization of Unicorn Companies](https://rpubs.com/dnavarro808/project2)
 
