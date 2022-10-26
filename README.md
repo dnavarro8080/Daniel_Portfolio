@@ -70,7 +70,7 @@ Photo by <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&utm_medium
 Analyzed if movie ratings become harsher or if they have lessened through the years. Are ratings independent of genres? 
 
 ## Relevant Work (Python/R)
-- [EDA]()
+- [EDA](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/project-eda-imdb.ipynb)
 - [Prediction]()
 - [Linreg & KNN]()
 - 
