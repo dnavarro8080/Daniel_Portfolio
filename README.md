@@ -10,7 +10,7 @@
 
 # [Project 1: Solid Waste Data Assessment](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/SolidWaste_RegressionAnalysis.ipynb)
 
-(![gary-chan-YzSZN3qvHeo-unsplash](https://user-images.githubusercontent.com/57077220/198105303-02fdf53f-0e93-4793-9499-5ef4bff28ccf.jpg)
+![gary-chan-YzSZN3qvHeo-unsplash](https://user-images.githubusercontent.com/57077220/198105303-02fdf53f-0e93-4793-9499-5ef4bff28ccf.jpg)
 
 Photo by <a href="https://unsplash.com/es/@gary_at_unsplash?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Gary Chan</a> on <a href="https://unsplash.com/s/photos/solid-waste?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
