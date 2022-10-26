@@ -30,7 +30,7 @@ and institutions, implemented with final report in Python.
 
 --- 
 
-# [Project 3: Housing Data Prediction]() 
+# [Project 3: Housing Data](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/STA6933_HW2_Navarro.Rmd) 
 ![breno-assis-r3WAWU5Fi5Q-unsplash](https://user-images.githubusercontent.com/57077220/198105884-a0df8f32-6a2a-4c40-a9f3-5a7f28b17d21.jpg)
 
 Photo by <a href="https://unsplash.com/@brenoassis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Breno Assis</a> on <a href="https://unsplash.com/s/photos/housing?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
