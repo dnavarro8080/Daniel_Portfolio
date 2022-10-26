@@ -69,7 +69,7 @@ performed a grid search of model parameters to improve the model's ability to pr
 
 Photo by <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Denise Jans</a> on <a href="https://unsplash.com/s/photos/movies?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
-Analyzed if movie ratings become harsher or if they have lessened through the years. Are ratings independent of genres? 
+Analyzed if movie ratings have become harsher or if they have lessened through the years. Are ratings independent of genres? 
 
 --- 
 
