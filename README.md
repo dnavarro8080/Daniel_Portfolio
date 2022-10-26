@@ -7,15 +7,19 @@
 * Bachelors of Science (Petroleum Engineering), *Texas A&M University*, 2016-2018
 
 # [Project 1: Solid Waste Data Assessment]()
-![alt text]()
+![glen-carrie-oHoBIbDj7lo-unsplash](https://user-images.githubusercontent.com/57077220/198104833-da0adbdf-56bb-4cf4-ad9f-e41039df3106.jpg)
 
+
+Photo by <a href="https://unsplash.com/@glencarrie?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Glen Carrie</a> on <a href="https://unsplash.com/s/photos/words?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+ 
 
 Studied solid waste data simulated from economic models to assess predictive ability
 of regressors on amount of solid trash generated. Corrected influential points, multicollinearity and dealt with outliers
 to obtain optimum multiple linear regression model fit.
 
 
-# [Project 2: Data Matching]()
+# [Project 2: Data Matching](https://github.com/dnavarro8080/Daniel_Portfolio/blob/main/Fuzzy_Matching_NLP.ipynb)
 ![alt text]()
 
 
