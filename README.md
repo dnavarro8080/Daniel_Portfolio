@@ -5,6 +5,7 @@
 # Education
 * Masters of Science (Statistics & Data Science), *University of Texas at San Antonio*, 2021-2023
 * Bachelors of Science (Petroleum Engineering), *Texas A&M University*, 2016-2018
+
 ---
 
 # [Project 1: Solid Waste Data Assessment](https://github.com/dnavarro8080/Data-Science-Portfolio/blob/main/SolidWaste_RegressionAnalysis.ipynb)
